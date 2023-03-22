@@ -7,13 +7,23 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
+import TextField from "@mui/material/TextField";
+import { object, string, number, date, InferType } from "yup";
 
 const Login = () => {
   const navigate = useNavigate();
   const { currentUser, error } = useSelector((state) => state?.auth);
 
   const loginScheme = {};
+  let userSchema = object({
+    name: string().required(),
+    age: number().required().positive().integer(),
+    email: string().email(),
+    website: string().url().nullable(),
+    createdOn: date().default(() => new Date()),
+  });
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -55,13 +65,30 @@ const Login = () => {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginScheme}
             onSubmit={(values, actions) => {
-              //TODO login(values) POST isteği
+              //TODO login(values)  POST istegi
               //TODO navigate
               actions.resetForm();
               actions.setSubmitting(false);
             }}
           >
-            {({ values, handleChange, handleBlur, errors }) => {}}
+            {({ values, handleChange, handleBlur, errors, touched }) => (
+              <Form>
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <TextField
+                    label="Email"
+                    name="email"
+                    id="email"
+                    type="email"
+                    variant="outlined"
+                    value={values?.email || ""}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.email && Boolean(errors.email)}
+                    helperText={touched.email && errors.email}
+                  />
+                </Box>
+              </Form>
+            )}
           </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
