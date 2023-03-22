@@ -15,13 +15,14 @@ const Login = () => {
   const navigate = useNavigate();
   const { currentUser, error } = useSelector((state) => state?.auth);
 
-  const loginScheme = {};
-  let userSchema = object({
-    name: string().required(),
-    age: number().required().positive().integer(),
-    email: string().email(),
-    website: string().url().nullable(),
-    createdOn: date().default(() => new Date()),
+  const loginScheme = object({
+    email: string().email().required("Email zorunludur"),
+
+    password: string()
+      .required("password zorunludur")
+      .min(8, "password en az 8 karakter olmalıdır")
+      .max(20, "password en fazla 20 karakter olmalıdır")
+      .matches(/\d+/, "password bir sayı içermelidir"),
   });
 
   return (
