@@ -51,6 +51,11 @@ const icons = [
   },
 ];
 
+const iconStyle = {
+  color: "white",
+  "&:hover": { color: "red" },
+};
+
 const MenuListItems = () => {
   const navigate = useNavigate();
   return (
