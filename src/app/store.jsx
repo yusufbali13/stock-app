@@ -8,4 +8,5 @@ const store = configureStore({
   },
   devTools: process.env.NODE_ENV !== "production",
 });
+export const persistor = persistor;
 export default store;
