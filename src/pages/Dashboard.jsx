@@ -88,7 +88,6 @@ function Dashboard(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               backgroundColor: blueGrey[900],
-              color: "white",
             },
           }}
         >
@@ -102,7 +101,6 @@ function Dashboard(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               backgroundColor: blueGrey[900],
-              color: "white",
             },
           }}
           open
