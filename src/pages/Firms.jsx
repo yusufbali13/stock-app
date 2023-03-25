@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
 import axios from "axios";
@@ -28,6 +28,14 @@ const Firms = () => {
       </Typography>
 
       <Button variant="contained">New Film</Button>
+
+      <Grid container>
+        {Firms?.map(() => (
+          <Grid item key={firm.id}>
+            <FirmCard />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };
