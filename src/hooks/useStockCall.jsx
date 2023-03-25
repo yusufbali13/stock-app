@@ -15,6 +15,7 @@ const useStockCall = () => {
         };
     
         )
+        return { getStockData}
     }
 
 export default useStockCall
