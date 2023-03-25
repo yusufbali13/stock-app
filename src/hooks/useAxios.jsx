@@ -1,12 +1,19 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-const BASE_URL = "https://12147.fullstack.clarusway.com/";
+const useAxios = () => {
+  const { token } = useSelector((state) => state.auth);
 
-const instance = axios.create({
-  baseURL: "https://some-domain.com/api/",
-  headers: { "X-Custom-Header": "foobar" },
-});
+  const axiosPublic = axios.create({
+    baseURL: "https://10001.fullstack.clarusway.com/",
+  });
 
-return {};
+  const axiosWithToken = axios.create({
+    baseURL: "https://10001.fullstack.clarusway.com/",
+    headers: { Authorization: `Token ${token}` },
+  });
+
+  return { axiosWithToken, axiosPublic };
+};
 
 export default useAxios;

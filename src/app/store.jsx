@@ -3,6 +3,7 @@ import authReducer from "../features/authSlice";
 import stockReducer from "../features/stockSlice";
 
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+
 import {
   persistStore,
   persistReducer,
@@ -26,6 +27,7 @@ const store = configureStore({
     auth: persistedReducer,
     stock: stockReducer,
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
