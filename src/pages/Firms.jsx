@@ -8,6 +8,7 @@ import { fetchStart } from "../features/authSlice";
 const Firms = () => {
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
   const getFirms = async () => {
     const BASE_URL = "https://12147.fullstack.clarusway.com/";
 
