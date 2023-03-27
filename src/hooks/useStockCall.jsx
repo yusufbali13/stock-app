@@ -38,7 +38,20 @@ const useStockCall = () => {
     }
   };
 
-  return { getStockData, deleteStockData };
+  const postStockData = async (url, id) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.delete(`stock/${url}/${id}/`);
+      toastSuccessNotify(`${url} successfuly deleted`);
+      getStockData(url);
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+      toastErrorNotify(`${url} can not be deleted`);
+    }
+  };
+
+  return { getStockData, deleteStockData, postStockData };
 };
 
 export default useStockCall;
