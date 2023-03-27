@@ -1,6 +1,6 @@
 import { Button, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FirmCard from "../components/FirmCard";
 import useStockCall from "../hooks/useStockCall";
@@ -48,7 +48,7 @@ const Firms = () => {
       <Button variant="contained">New Firm</Button>
       <Button onClick={handleOpen}>Open modal</Button>
 
-      <FirModal />
+      <FirModal open={open} />
 
       <Grid container sx={flex}>
         {firms?.map((firm) => (
