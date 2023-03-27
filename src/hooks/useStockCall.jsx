@@ -38,10 +38,10 @@ const useStockCall = () => {
     }
   };
 
-  const postStockData = async (url, id) => {
+  const putStockData = async (url, id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`stock/${url}/${id}/`);
+      await axiosWithToken.put(`stock/${url}/${id}/`);
       toastSuccessNotify(`${url} successfuly deleted`);
       getStockData(url);
     } catch (error) {
