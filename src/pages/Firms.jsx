@@ -46,6 +46,9 @@ const Firms = () => {
       </Typography>
 
       <Button variant="contained">New Firm</Button>
+      <Button onClick={handleOpen}>Open modal</Button>
+
+      <FirModal />
 
       <Grid container sx={flex}>
         {firms?.map((firm) => (
