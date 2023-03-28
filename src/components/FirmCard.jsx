@@ -43,7 +43,13 @@ export default function FirmCard({ firm, setOpen, setInfo }) {
         Phone: {firm?.phone}
       </Typography>
       <CardActions sx={flex}>
-        <EditIcon sx={btnStyle} onClick={() => setOpen(true)} />
+        <EditIcon
+          sx={btnStyle}
+          onClick={() => {
+            setOpen(true);
+            setInfo(firm);
+          }}
+        />
         <DeleteOutlineIcon
           sx={btnStyle}
           onClick={() => deleteStockData("firms", firm.id)}
