@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FirmCard from "../components/FirmCard";
+import FirmModal from "../components/modals/FirmModal";
 import useStockCall from "../hooks/useStockCall";
 import { flex } from "../styles/globalStyle";
 
@@ -31,6 +32,17 @@ const Firms = () => {
 
   const { getStockData } = useStockCall();
   const { firms } = useSelector((state) => state.stock);
+  const [open, setOpen] = useState(false);
+
+  const [info, setInfo] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    image: "",
+  });
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     // getFirms()
@@ -45,11 +57,16 @@ const Firms = () => {
         Firm
       </Typography>
 
-      <Button variant="contained">New Firm</Button>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button variant="contained" onClick={handleOpen}>
+        New Firm
+      </Button>
 
-      <FirModal open={open} />
-
+      <FirmModal
+        open={open}
+        handleClose={handleClose}
+        info={info}
+        setInfo={setInfo}
+      />
       <Grid container sx={flex}>
         {firms?.map((firm) => (
           <Grid item key={firm.id}>
