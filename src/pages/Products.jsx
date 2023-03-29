@@ -8,21 +8,23 @@ import useStockCall from "../hooks/useStockCall";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { btnStyle } from "../styles/globalStyle";
 
 const Products = () => {
-  const { getStockData } = useStockCall();
+  const { getStockData, deleteStockData, getProCatBrand } = useStockCall();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
 
   const [info, setInfo] = useState({
+    category_id: "",
+    brand_id: "",
     name: "",
-    phone: "",
-    address: "",
-    image: "",
   });
 
   const handleOpen = () => setOpen(true);
+
   const handleClose = () => setOpen(false);
 
   const columns = [
@@ -77,23 +79,24 @@ const Products = () => {
       align: "center",
       minWidth: 50,
       flex: 1,
+      renderCell: ({ id }) => (
+        <GridActionsCellItem
+          icon={<DeleteForeverIcon />}
+          label="Delete"
+          sx={btnStyle}
+          onClick={() => deleteStockData("products", id)}
+        />
+      ),
     },
   ];
 
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-  ];
-
   useEffect(() => {
-    getStockData("products");
+    // getStockData("products")
+    // getStockData("categories")
+    // getStockData("brands")
+
+    //! Promise All
+    getProCatBrand();
   }, []);
 
   return (
@@ -113,7 +116,7 @@ const Products = () => {
         setInfo={setInfo}
       />
 
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", marginTop: "1rem" }}>
         <DataGrid
           autoHeight
           rows={products}
@@ -127,6 +130,7 @@ const Products = () => {
           }}
           pageSizeOptions={[5]}
           disableRowSelectionOnClick
+          slots={{ toolbar: GridToolbar }}
         />
       </Box>
     </div>
