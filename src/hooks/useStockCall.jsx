@@ -51,7 +51,7 @@ const useStockCall = () => {
     }
   };
 
-  const putStockData = async (url, info) => {
+  const putStockData = async () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
