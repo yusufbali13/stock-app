@@ -28,32 +28,31 @@ const Products = () => {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "firstName",
-      headerName: "First name",
+      field: "category",
+      headerName: "Category",
       width: 150,
-      editable: true,
     },
     {
-      field: "lastName",
-      headerName: "Last name",
+      field: "brand",
+      headerName: "Brand",
       width: 150,
-      editable: true,
     },
     {
-      field: "age",
-      headerName: "Age",
+      field: "name",
+      headerName: "Name",
       type: "number",
       width: 110,
-      editable: true,
     },
     {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
+      field: "stock",
+      headerName: "Stock",
       width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      type: "number",
+      width: 110,
     },
   ];
 
@@ -90,8 +89,9 @@ const Products = () => {
         setInfo={setInfo}
       />
 
-      <Box sx={{ height: 400, width: "100%" }}>
+      <Box sx={{ width: "100%" }}>
         <DataGrid
+          autoHeight
           rows={rows}
           columns={columns}
           initialState={{
@@ -102,7 +102,6 @@ const Products = () => {
             },
           }}
           pageSizeOptions={[5]}
-          checkboxSelection
           disableRowSelectionOnClick
         />
       </Box>
