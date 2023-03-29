@@ -26,33 +26,38 @@ const Products = () => {
   const handleClose = () => setOpen(false);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "#", minWidth: 60, flex: 1 },
     {
       field: "category",
       headerName: "Category",
-      width: 150,
+      minWidth: 150,
+      flex: 3,
     },
     {
       field: "brand",
       headerName: "Brand",
-      width: 150,
+      minWidth: 150,
+      flex: 2,
     },
     {
       field: "name",
       headerName: "Name",
       type: "number",
-      width: 110,
+      minWidth: 150,
+      flex: 2,
     },
     {
       field: "stock",
       headerName: "Stock",
-      width: 160,
+      minWidth: 100,
+      flex: 0.7,
     },
     {
       field: "actions",
       headerName: "Actions",
       type: "number",
-      width: 110,
+      minWidth: 50,
+      flex: 1,
     },
   ];
 
