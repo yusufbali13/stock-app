@@ -30,6 +30,12 @@ const stockSlice = createSlice({
     //   state.loading = false
     //   state.purchases = payload
     // },
+    getProCatBrandSuccess: (state, {payload}) => {
+      state.loading = false
+      state.products = x
+      state.categories = y
+      state.brands = z
+    }
 
     fetchFail: (state) => {
       state.loading = false;
