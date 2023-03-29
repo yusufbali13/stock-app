@@ -54,7 +54,7 @@ const useStockCall = () => {
   const putStockData = async () => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
+      axiosWithToken.put(`stock/${url}/${info.id}/`, info);
       toastSuccessNotify(`${url} successfuly updated`);
       getStockData(url);
     } catch (error) {
@@ -64,7 +64,13 @@ const useStockCall = () => {
     }
   };
 
-  return { getStockData, deleteStockData, postStockData, putStockData };
+  return {
+    getStockData,
+    deleteStockData,
+    postStockData,
+    putStockData,
+    getProCatBrand,
+  };
 };
 
 export default useStockCall;
