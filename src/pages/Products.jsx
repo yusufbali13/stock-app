@@ -8,7 +8,7 @@ import useStockCall from "../hooks/useStockCall";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { DeleteForever } from "@mui/icons-material";
 import { btnStyle } from "../styles/globalStyle";
 
@@ -125,6 +125,7 @@ const Products = () => {
           }}
           pageSizeOptions={[5]}
           disableRowSelectionOnClick
+          slots={{ toolbar: GridToolbar }}
         />
       </Box>
     </div>

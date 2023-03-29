@@ -16,11 +16,6 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (info.id) {
-      putStockData("products", info);
-    } else {
-      postStockData("products", info);
-    }
 
     handleClose();
     setInfo({ name: "", phone: "", address: "", image: "" });
