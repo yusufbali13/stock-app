@@ -57,7 +57,11 @@ const Firms = () => {
         Firm
       </Typography>
 
-      <Button variant="contained" onClick={handleOpen}>
+      <Button
+        variant="contained"
+        onClick={handleOpen}
+        sx={{ marginBottom: "1rem" }}
+      >
         New Firm
       </Button>
 
