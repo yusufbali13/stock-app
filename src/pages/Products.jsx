@@ -26,36 +26,55 @@ const Products = () => {
   const handleClose = () => setOpen(false);
 
   const columns = [
-    { field: "id", headerName: "#", minWidth: 60, flex: 1 },
+    {
+      field: "id",
+      headerName: "#",
+      minWidth: 40,
+      maxWidth: 70,
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
     {
       field: "category",
       headerName: "Category",
-      minWidth: 150,
+      headerAlign: "center",
+      align: "center",
       flex: 3,
+      minWidth: 150,
     },
     {
       field: "brand",
       headerName: "Brand",
       minWidth: 150,
+      headerAlign: "center",
+      align: "center",
       flex: 2,
     },
     {
       field: "name",
       headerName: "Name",
       type: "number",
+      headerAlign: "center",
+      align: "center",
       minWidth: 150,
       flex: 2,
     },
+
     {
       field: "stock",
       headerName: "Stock",
       minWidth: 100,
+      headerAlign: "center",
+      align: "center",
       flex: 0.7,
     },
     {
       field: "actions",
       headerName: "Actions",
       type: "number",
+      headerAlign: "center",
+      align: "center",
       minWidth: 50,
       flex: 1,
     },
