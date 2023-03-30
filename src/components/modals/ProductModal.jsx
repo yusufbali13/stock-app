@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import InputLabel from "@mui/material/InputLabel";
@@ -14,7 +13,8 @@ import { useSelector } from "react-redux";
 
 export default function ProductModal({ open, handleClose, info, setInfo }) {
   const { postStockData } = useStockCall();
-  const { categories } = useSelector((state) => state.stock);
+  const { categories, brands } = useSelector((state) => state.stock);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
@@ -53,61 +53,55 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
               <Select
                 labelId="category"
                 id="category"
+                name="category_id"
                 value={info?.category_id}
                 label="Category"
                 onChange={handleChange}
               >
                 {categories?.map((item) => (
-                  <MenuItem key={item.id} value={10}>
+                  <MenuItem key={item.id} value={item.id}>
                     {item.name}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
+            <FormControl fullWidth>
+              <InputLabel variant="outlined" id="brand-select">
+                Brands
+              </InputLabel>
+              <Select
+                labelId="brand-select"
+                label="Brand"
+                id="brand-select"
+                name="brand_id"
+                value={info?.brand_id}
+                onChange={handleChange}
+                required
+              >
+                {brands?.map((brand) => {
+                  return (
+                    <MenuItem key={brand.id} value={brand.id}>
+                      {brand.name}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+
             <TextField
-              label="Firm Name"
+              margin="dense"
+              label="Product Name"
               name="name"
               id="name"
               type="text"
               variant="outlined"
-              required
               value={info?.name}
               onChange={handleChange}
-            />
-            <TextField
-              label="Phone"
-              name="phone"
-              id="phone"
-              type="tel"
-              variant="outlined"
               required
-              value={info?.phone}
-              onChange={handleChange}
-            />
-            <TextField
-              label="Address"
-              name="address"
-              id="address"
-              type="text"
-              variant="outlined"
-              required
-              value={info?.address}
-              onChange={handleChange}
-            />
-
-            <TextField
-              label="Image"
-              name="image"
-              id="image"
-              type="url"
-              variant="outlined"
-              required
-              value={info?.image}
-              onChange={handleChange}
             />
 
             <Button type="submit" variant="contained">
-              Submit Firm
+              Add New Product
             </Button>
           </Box>
         </Box>

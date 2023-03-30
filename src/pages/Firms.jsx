@@ -47,9 +47,7 @@ const Firms = () => {
   useEffect(() => {
     // getFirms()
     getStockData("firms");
-  }, []);
-
-  console.log(firms);
+  }, []); // eslint-disable-line
 
   return (
     <div>

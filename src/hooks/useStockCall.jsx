@@ -1,5 +1,6 @@
 // import axios from "axios"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+// import { useSelector } from "react-redux"
 import {
   fetchFail,
   getSuccess,
@@ -22,7 +23,6 @@ const useStockCall = () => {
       //     headers: { Authorization: `Token ${token}` },
       //   })
       const { data } = await axiosWithToken(`stock/${url}/`);
-      console.log(data);
       dispatch(getSuccess({ data, url }));
     } catch (error) {
       console.log(error);
