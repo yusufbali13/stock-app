@@ -8,6 +8,10 @@ const KpiCards = () => {
   const iconSize = {
     ".MuiSvgIcon-root": { fontSize: "2" },
   };
+
+  const totalSales = sales
+    .map((item) => item.price_total)
+    .reduce((acc, val) => acc + val, 0);
   const data = [
     {
       id: 1,
@@ -35,6 +39,7 @@ const KpiCards = () => {
     },
   ];
 
+  console.log(totalSales);
   return (
     <Grid container justifyContent={"center"} spacing={3}>
       {data.map((item) => (
