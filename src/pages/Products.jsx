@@ -13,7 +13,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { btnStyle } from "../styles/globalStyle";
 
 const Products = () => {
-  const { getStockData, deleteStockData, getProCatBrand } = useStockCall();
+  const { deleteStockData, getProCatBrand } = useStockCall();
   const { products } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
 
@@ -97,7 +97,7 @@ const Products = () => {
 
     //! Promise All
     getProCatBrand();
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <div>
@@ -121,16 +121,12 @@ const Products = () => {
           autoHeight
           rows={products}
           columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
-              },
-            },
-          }}
-          pageSizeOptions={[5]}
+          pageSize={10}
           disableRowSelectionOnClick
           slots={{ toolbar: GridToolbar }}
+          sx={{
+            boxShadow: 4,
+          }}
         />
       </Box>
     </div>
