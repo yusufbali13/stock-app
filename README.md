@@ -57,5 +57,4 @@
 <!-- add asset here later -->
 ![inter](https://github.com/yusufbali13/stock-app/assets/119419061/d744438a-63d1-482a-867f-42e53ba04cac)
 
-
-In this project, I built a simple stock app using React, React Router, React Custom Hooks, and MUI Based Components. I used the React Router to navigate between the pages. I used the React Custom Hooks to create custom hooks and used the Material UI to create the UI components.
+In this project, I built a simple stock app using React, React Router, React Custom Hooks, and MUI Based Components. I used the [React Router](https://reactrouter.com/) to navigate between the pages. I used the [React Custom Hooks](https://reactjs.org/docs/hooks-custom.html) to create custom hooks and used the [Material UI](https://material-ui.com/) to create the UI components.
