@@ -58,4 +58,4 @@
 
 ![Netflix project](./movie.gif)
 
-In this project I'm using React, React Router, Firebase, and The Movie Database API. I'm also using React Hooks, React Context API & Firebase Authentication to build this project.
+In this project, I built a simple stock app using React, React Router, React Custom Hooks, and MUI Based Components. I used the React Router to navigate between the pages. I used the React Custom Hooks to create custom hooks and used the Material UI to create the UI components.
